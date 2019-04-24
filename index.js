@@ -54,7 +54,7 @@ bot.on('ready', () => {
 bot.on('message', message => {
     if (message.author.bot) return;
     
-    if (message.channel.id.toString() != "570407342345158660")
+    if (message.channel.id.toString() != "570407342345158660"){
         return
     }
     loadConfig()
