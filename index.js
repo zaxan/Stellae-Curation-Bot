@@ -202,7 +202,7 @@ bot.on('message', message => {
                         var power = (parseFloat(vp) * parseFloat(weight) / 10000) / 50
                         var rshares = power * final_vest / 10000
                         var estimate = null
-                        estimate = (rshares / parseFloat(recentClaims) * parseFloat(rewardBalance) * parseFloat(resultHistory.base.split(" ")[0])) * 10000
+                        estimate = (rshares / parseFloat(recentClaims) * parseFloat(rewardBalance) * parseFloat(resultHistory.base.split(" ")[0] / resultHistory.quote.split(" ")[0])) * 10000
                         if (estimate != null) {
                             message.channel.send("<@" + message.author.id + "> " + steemAccount + "'s vote value at " + weight + "% vote weight is estimated to be $" + (Math.round(estimate * 1000) / 1000) + ".")
                         } else {
