@@ -291,6 +291,8 @@ function voteNow(wif, voter, author, permlink, weight, message, member) {
             writeTimes()
             
         });
+        
+        resteem(author, permlink)
 
         if (member) {
             if (drottoEnabled) {
@@ -318,6 +320,18 @@ function sendDrottoBid(author, permlink) {
 
         }
     });
+}
+
+function resteem(author, permlink){
+const json = JSON.stringify(['reblog', {
+  account: steemAccount,
+  author: author,
+  permlink: permlink
+}]);
+
+steem.broadcast.customJson(wif, [], [steemAccount], 'follow', json, (err, result) => {
+  console.log(err, result);
+});
 }
 
 
