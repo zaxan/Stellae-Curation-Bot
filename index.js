@@ -46,7 +46,7 @@ const bot = new Discord.Client();
 
 bot.on('ready', () => {
     console.log('¡Stellae a iniciado!');
-    bot.user.setActivity(prefix + "help", {
+    bot.user.setActivity("Curando contenido artistico hispano", {
         type: 'PLAYING'
     });
 });
@@ -300,33 +300,7 @@ function voteNow(wif, voter, author, permlink, weight, message, member) {
         console.error(error)
         message.channel.send("<@" + message.author.id + "> Hubo un error. No sabemos por qué (todavía). Esperemos que pronto." + extraMessage)
     })
-    .then(function (result) {
-        //reblog
-        const jsonOp = JSON.stringify([
-           'reblog',
-           {
-               account: voter,
-               author: author,
-               permlink: permlink,
-           },
-       ]);
-       
-       const data = {
-           id: 'follow',
-           json: jsonOp,
-           required_auths: [],
-           required_posting_auths: [voter],
-       };
-       
-       client.broadcast.json(data, wif).then(
-           function(result) {
-               console.log('client broadcast result: ', result);
-           }, function(error) {
-               console.error(error);
-           })
-
-        });
-       //end reblog
+    
 }
 
 function sendDrottoBid(author, permlink) {
