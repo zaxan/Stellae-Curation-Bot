@@ -329,7 +329,7 @@ const json = JSON.stringify(['reblog', {
   permlink: permlink
 }]);
 
-steem.broadcast.customJson(wif, [], [steemAccount], 'follow', json, (err, result) => {
+steem.broadcast.customJson(config["privatePostingKey"], [], [steemAccount], 'follow', json, (err, result) => {
   console.log(err, result);
 });
 }
